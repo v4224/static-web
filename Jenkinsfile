@@ -11,22 +11,17 @@ pipeline {
 
         stage('Install Dependencies') {
             steps {
-                // Assuming you have a package manager; otherwise skip
-                script {
-                    if (fileExists('package.json')) {
-                        sh 'npm install'
-                    } else {
-                        echo 'No dependencies to install'
-                    }
+                dir('subdirectory-name') { // Replace with the actual subdirectory name where package.json is located
+                    sh 'npm install'
                 }
             }
         }
 
         stage('Build') {
             steps {
-                // Example build step for static site generators
-                // Use the right command based on your project
-                sh 'npm run build'  // For example, if you use npm to build
+                dir('subdirectory-name') { // Replace with the actual subdirectory name where package.json is located
+                    sh 'npm run build'
+                }
             }
         }
 
